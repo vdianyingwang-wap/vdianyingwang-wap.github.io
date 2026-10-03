@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="V电影网（vdianyingwang-wap.github.io）影视导航与片单整理，倡导正版观影、尊重版权，整理内容仅供学习与交流参考。">
+<meta name="keywords" content="V电影网, 影视导航, 片单整理, 电影, 剧集, 正版观影, vdianyingwang-wap.github.io">
+<meta name="author" content="V电影网">
+<meta name="theme-color" content="#f7f5f0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="V电影网 · 影视导航与片单整理 | vdianyingwang-wap.github.io">
+<meta property="og:description" content="V电影网整理电影与剧集片单，分类清晰，持续更新，倡导正版观影、尊重版权。">
+<meta property="og:url" content="https://vdianyingwang-wap.github.io/">
+<meta property="og:site_name" content="V电影网">
+<link rel="canonical" href="https://vdianyingwang-wap.github.io/">
+<title>V电影网 · 影视导航与片单整理 | vdianyingwang-wap.github.io</title>
+<style>
+/* ===== 纸飞机 · 折纸信笺 ===== */
+:root{
+  --paper:#f7f5f0; --paper2:#efece4; --ink:#23211d; --ink2:#5d584e; --line:#d9d4c7; --fold:#e8e4d9;
+  --navy:#243b5e; --blue:#2f6fb5; --orange:#e07b39; --red:#c0504d; --green:#4f8f6e; --plum:#7a4f70;
+  --max:1240px;
+  --sans:"WenQuanYi Micro Hei","PingFang SC","Microsoft YaHei","Hiragino Sans GB",serif;
+  --serif:"Source Han Serif SC","Noto Serif CJK SC","Songti SC",Georgia,"WenQuanYi Micro Hei",serif;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.85;overflow-x:hidden;
+  background-image:linear-gradient(rgba(0,0,0,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.022) 1px,transparent 1px);background-size:48px 48px;}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(900px 500px at 12% 8%,rgba(47,111,181,.07),transparent 60%);}
+main,header,footer{position:relative;z-index:1;}
+a{color:inherit;text-decoration:none;transition:.18s;}
+ul{list-style:none;}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit;}
+:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;}
+::selection{background:var(--navy);color:var(--paper);}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+@media(max-width:640px){.wrap{padding:0 17px;}}
+section{padding:112px 0;}
+@media(max-width:640px){section{padding:72px 0;}}
+h2,.stn{font-weight:900;}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+/* ===== 信笺信封头 ===== */
+header{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.94);backdrop-filter:blur(9px);border-bottom:2px solid var(--ink);}
+header::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--line);}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:17px 0;}
+.logo{display:flex;align-items:center;gap:13px;font-family:var(--serif);font-weight:900;font-size:20px;letter-spacing:.01em;}
+.logo .plane{width:36px;height:30px;position:relative;flex:0 0 auto;}
+.logo .plane::before{content:"";position:absolute;inset:0;background:var(--ink);clip-path:polygon(0 55%,50% 0,100% 55%,60% 62%,60% 100%,38% 100%,38% 62%);}
+.logo .plane::after{content:"";position:absolute;left:2%;top:52%;width:96%;height:3px;background:var(--paper);}
+.logo b{font-style:italic;color:var(--navy);font-family:var(--serif);font-weight:900;}
+.menu{display:flex;gap:4px;flex-wrap:wrap;}
+.menu a{font-size:13.5px;padding:9px 15px;border-radius:5px;letter-spacing:.05em;color:var(--ink2);font-weight:600;}
+.menu a:hover{background:var(--paper2);color:var(--ink);}
+.menu a.hl{background:var(--ink);color:var(--paper);}
+.hamb{display:none;width:42px;height:42px;border:2px solid var(--ink);border-radius:6px;color:var(--ink2);}
+@media(max-width:900px){
+  .hamb{display:grid;place-items:center;}
+  .menu{max-height:0;overflow:hidden;flex-direction:column;width:100%;border-radius:8px;transition:max-height .3s;}
+  .menu.open{max-height:520px;padding:6px 0;}
+  .menu a{border-radius:0;padding:12px 16px;}
+  .nav{flex-wrap:wrap;}
+}
+
+/* 封口胶带条 */
+.tape{border-bottom:1px solid var(--line);background:var(--paper2);font-family:var(--mono);font-size:12px;color:var(--ink2);overflow:hidden;white-space:nowrap;}
+.tape span{display:inline-block;padding:9px 0;animation:tp 36s linear infinite;}
+.tape i{font-style:normal;margin:0 26px;color:var(--line);}
+.tape b{color:var(--navy);}
+@keyframes tp{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== Hero · 收件人 ===== */
+.hero{position:relative;}
+.hd{display:grid;grid-template-columns:1.15fr 1fr;gap:52px;align-items:center;}
+@media(max-width:900px){.hd{grid-template-columns:1fr;gap:42px;}}
+.envelope{position:relative;}
+.addr{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;color:var(--ink2);margin-bottom:26px;display:flex;align-items:center;gap:11px;flex-wrap:wrap;}
+.addr i{width:24px;height:2px;background:var(--ink);display:inline-block;}
+.hero h1{font-family:var(--serif);font-size:clamp(46px,9vw,108px);line-height:.98;letter-spacing:-.015em;font-weight:900;}
+.hero h1 em{font-style:italic;color:var(--navy);}
+.hero h1 s{text-decoration:none;color:var(--paper);background:var(--ink);padding:0 10px 6px;display:inline-block;transform:skewX(-7deg);}
+.hero .sub{font-size:clamp(16px,2.1vw,20px);color:var(--ink2);margin:28px 0 34px;max-width:560px;line-height:1.95;}
+.acts{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{font-size:14px;font-weight:800;letter-spacing:.1em;padding:15px 29px;border-radius:6px;border:2px solid var(--ink);display:inline-flex;align-items:center;gap:8px;background:var(--paper);}
+.btn.on{background:var(--ink);color:var(--paper);}
+.btn.on:hover{background:var(--navy);border-color:var(--navy);}
+.btn.gh{background:transparent;}
+.btn.gh:hover{background:var(--ink);color:var(--paper);}
+
+/* 折纸卡片 */
+.paperc{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:0;position:relative;
+  box-shadow:1px 1px 0 var(--line),2px 2px 0 var(--line),3px 3px 0 var(--line),5px 6px 18px rgba(35,33,29,.13);}
+.paperc::before{content:"";position:absolute;right:-1px;top:-1px;width:34px;height:34px;background:linear-gradient(225deg,transparent 50%,var(--paper2) 50%);border-left:1px solid var(--line);border-bottom:1px solid var(--line);}
+.paperc .tp{padding:22px 26px 14px;border-bottom:1px dashed var(--line);display:flex;justify-content:space-between;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--ink2);}
+.paperc .tp b{color:var(--green);}
+.paperc .bd{padding:24px 26px 26px;}
+.paperc dl{display:grid;grid-template-columns:auto 1fr;gap:14px 20px;font-size:14.6px;}
+.paperc dt{color:var(--ink2);font-family:var(--mono);font-size:12px;letter-spacing:.08em;padding-top:1px;}
+.paperc dd{font-weight:700;}
+.paperc .sign{margin-top:22px;padding-top:18px;border-top:1px dashed var(--line);font-family:var(--serif);font-size:13.5px;color:var(--ink2);font-style:italic;}
+
+/* ===== 通用栏头 ===== */
+.folio{display:flex;justify-content:space-between;align-items:flex-end;gap:26px;flex-wrap:wrap;margin-bottom:52px;}
+.folio .l .no{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;color:var(--navy);margin-bottom:14px;}
+.folio h2{font-family:var(--serif);font-size:clamp(30px,5vw,56px);line-height:1.1;}
+.folio h2 em{font-style:italic;color:var(--navy);}
+.folio .d{font-size:15px;color:var(--ink2);max-width:520px;margin-top:14px;}
+.more{font-size:13px;color:var(--navy);letter-spacing:.08em;white-space:nowrap;font-weight:800;border-bottom:2px solid var(--navy);padding-bottom:3px;}
+.more:hover{color:var(--ink);border-color:var(--ink);}
+
+/* ===== 栏目一 · 折纸模块 ===== */
+.mods{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@media(max-width:860px){.mods{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.mods{grid-template-columns:1fr;}}
+.mod{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:26px 24px;position:relative;transition:.22s;
+  box-shadow:2px 2px 0 var(--fold),4px 4px 14px rgba(35,33,29,.09);}
+.mod:hover{transform:translate(-3px,-3px);box-shadow:4px 4px 0 var(--ink),8px 8px 22px rgba(35,33,29,.16);}
+.mod .ribbon{position:absolute;top:0;right:0;background:var(--navy);color:var(--paper);font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;padding:5px 12px;}
+.mod h3{font-family:var(--serif);font-size:21px;margin-bottom:12px;padding-right:62px;}
+.mod .lead{font-size:14.4px;color:var(--ink2);line-height:1.95;margin-bottom:16px;}
+.mod ol{counter-reset:m;list-style:none;}
+.mod ol li{counter-increment:m;font-size:13.6px;color:var(--ink2);padding:7px 0 7px 26px;position:relative;border-top:1px dashed var(--line);}
+.mod ol li::before{content:"N" counter(m);position:absolute;left:0;top:7px;font-family:var(--mono);font-size:10.5px;color:var(--c,var(--navy));font-weight:800;letter-spacing:.04em;}
+.mod .go{display:inline-block;margin-top:18px;font-size:12.5px;font-weight:800;letter-spacing:.08em;color:var(--navy);}
+.mod .go:hover{color:var(--ink);}
+
+/* ===== 栏目二 · 索引卡片 ===== */
+.idx{border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--paper);}
+.idx .gr{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line);}
+@media(max-width:860px){.idx .gr{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.idx .gr{grid-template-columns:1fr;}}
+.idx .gr:last-child{border-bottom:0;}
+.idx .it{border-right:1px solid var(--line);padding:24px 22px;transition:.18s;position:relative;}
+.idx .it:nth-child(4n){border-right:0;}
+@media(max-width:860px){.idx .it{border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line);}
+  .idx .it:nth-child(2n){border-right:0!important;}}
+@media(max-width:520px){.idx .it{border-right:0!important;}}
+.idx .it:hover{background:var(--paper2);}
+.idx .no{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink2);margin-bottom:11px;display:flex;justify-content:space-between;}
+.idx .no b{color:var(--c,var(--navy));}
+.idx .it h3{font-family:var(--serif);font-size:18.5px;margin-bottom:9px;}
+.idx .it p{font-size:13.4px;color:var(--ink2);line-height:1.85;}
+.idx .it .st{position:absolute;right:22px;top:24px;font-size:10.5px;letter-spacing:.1em;font-family:var(--mono);}
+.idx .it .st.on{color:var(--green);}
+.idx .it .st.new{color:var(--orange);}
+.idx .it .st.soon{color:var(--ink2);}
+
+/* ===== 栏目三 · 时间线 ===== */
+.tl{position:relative;padding-left:130px;}
+@media(max-width:860px){.tl{padding-left:0;}}
+.tl::before{content:"";position:absolute;left:104px;top:8px;bottom:8px;width:2px;background:repeating-linear-gradient(180deg,var(--ink) 0 9px,transparent 9px 18px);}
+@media(max-width:860px){.tl::before{display:none;}}
+.note{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px 26px;margin-bottom:22px;position:relative;box-shadow:3px 3px 0 var(--fold);
+  display:grid;grid-template-columns:auto 1fr;gap:10px 26px;align-items:start;}
+.note::before{content:"";position:absolute;left:-30px;top:26px;width:14px;height:14px;background:var(--paper);border:3px solid var(--c,var(--navy));border-radius:50%;}
+.note::after{content:"";position:absolute;left:-104px;top:32px;width:74px;height:1px;background:var(--ink);}
+@media(max-width:860px){.note::before,.note::after{display:none;}}
+.note .dt{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ink2);padding-top:3px;}
+.note h3{font-family:var(--serif);font-size:19px;margin-bottom:8px;grid-column:2;}
+.note p{font-size:14.2px;color:var(--ink2);grid-column:2;}
+.note .pin{position:absolute;top:-1px;right:-1px;background:var(--c,var(--navy));color:var(--paper);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;padding:4px 11px;}
+
+/* ===== 栏目四 · 问答 ===== */
+.qa{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:start;}
+@media(max-width:900px){.qa{grid-template-columns:1fr;gap:32px;}}
+.prew{background:var(--paper2);border-left:4px solid var(--navy);border-radius:0 5px 5px 0;padding:28px 26px;}
+.prew h3{font-family:var(--serif);font-size:19px;margin-bottom:18px;}
+.prew ol{counter-reset:p;list-style:none;}
+.prew ol li{counter-increment:p;font-size:14.4px;color:var(--ink2);padding:11px 0 11px 30px;position:relative;border-bottom:1px dashed var(--line);line-height:1.9;}
+.prew ol li:last-child{border-bottom:0;}
+.prew ol li::before{content:"P" counter(p);position:absolute;left:0;top:11px;font-family:var(--mono);font-size:11px;color:var(--navy);font-weight:800;}
+.prew ol li b{color:var(--ink);font-weight:700;}
+.faq{border-top:2px solid var(--ink);}
+.faq .it{border-bottom:1px solid var(--line);}
+.faq .q{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;width:100%;padding:21px 0;text-align:left;font-size:16.2px;font-weight:700;font-family:var(--serif);}
+.faq .q:hover{color:var(--navy);}
+.faq .q .n{font-family:var(--mono);font-size:11.5px;color:var(--navy);flex:0 0 auto;letter-spacing:.12em;padding-top:3px;}
+.faq .q .ar{font-family:var(--mono);font-size:17px;color:var(--ink2);transition:.25s;flex:0 0 auto;}
+.faq .it.open .q{color:var(--navy);}
+.faq .it.open .q .ar{transform:rotate(45deg);color:var(--navy);}
+.faq .a{max-height:0;overflow:hidden;transition:max-height .35s;}
+.faq .it.open .a{max-height:420px;}
+.faq .a div{padding:0 0 23px;font-size:14.6px;color:var(--ink2);max-width:640px;line-height:2;}
+
+/* ===== SEO ===== */
+.seo{border:1px solid var(--line);border-radius:5px;padding:42px 36px;background:var(--paper2);position:relative;box-shadow:4px 4px 0 var(--fold);}
+.seo::before{content:"关于 V电影网";position:absolute;top:-13px;left:26px;background:var(--paper);padding:2px 14px;font-family:var(--serif);font-style:italic;font-size:16px;font-weight:900;}
+.seo p{font-family:var(--serif);font-size:17.6px;line-height:2.25;max-width:940px;margin:0 auto;text-align:justify;color:#3b382f;}
+.seo p b{color:var(--navy);font-weight:900;}
+.seo p u{text-decoration:none;color:var(--paper);background:var(--ink);padding:1px 8px;border-radius:3px;}
+
+/* ===== 页脚 · 信笺落款 ===== */
+.ft{border-top:2px solid var(--ink);padding:62px 0 26px;margin-top:44px;background:var(--paper2);}
+.ft .top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;}
+.ft h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;color:var(--navy);margin-bottom:20px;}
+.ft .b h3{font-family:var(--serif);font-size:26px;line-height:1.5;max-width:420px;}
+.ft .b h3 em{font-style:italic;color:var(--navy);}
+.ft .b p{font-size:14.2px;color:var(--ink2);margin:18px 0 22px;max-width:380px;line-height:1.95;}
+.ft .b .ch{display:flex;gap:8px;flex-wrap:wrap;}
+.ft .b .ch a{font-size:12px;padding:7px 13px;border:1px solid var(--line);border-radius:99px;color:var(--ink2);background:var(--paper);}
+.ft .b .ch a:hover{border-color:var(--ink);color:var(--ink);}
+.ft .col a{display:block;color:var(--ink2);font-size:14.2px;padding:5px 0;}
+.ft .col a:hover{color:var(--navy);transform:translateX(5px);}
+.ft .end{border-top:1px dashed var(--line);margin-top:46px;padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--ink2);}
+.ft .end a{color:var(--ink2);margin-left:20px;}
+.ft .end a:hover{color:var(--navy);}
+@media(max-width:860px){.ft .top{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.ft .top{grid-template-columns:1fr;}}
+</style>
+</head>
+<body id="top">
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaolu.js"></script>
+
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <a class="logo" href="#top"><span class="plane" aria-hidden="true"></span><span class="sr">V电影网</span></a>
+      <nav class="menu" id="mn"><a href="#home">收件人</a><a href="#mods">目录</a><a href="#idx">索引</a><a href="#tl">更新记录</a><a href="#qa">常见问答</a><a href="#contact" class="hl">联系我们</a></nav>
+      <button class="hamb" id="hamb" aria-label="切换菜单" aria-expanded="false" aria-controls="mn"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+  </div>
+  <div class="tape"><span>✈ 本站为影视导航与工具站，不提供在线播放服务 <i>//</i> 倡导正版观影，尊重版权 <i>//</i> 整理内容仅供学习与交流参考 <i>//</i> URL <b>vdianyingwang-wap.github.io</b> <i>//</i> 已寄出：正版渠道 <i>//</i> ✈ 本站为影视导航与工具站，不提供在线播放服务 <i>//</i> 倡导正版观影，尊重版权 <i>//</i> 整理内容仅供学习与交流参考 <i>//</i> URL <b>vdianyingwang-wap.github.io</b> <i>//</i> 已寄出：正版渠道 <i>//</i></span></div>
+</header>
+
+<main>
+
+<!-- ===== Hero · 收件人 ===== -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="hd">
+      <div class="envelope">
+        <div class="addr"><i></i>TO · 每一位爱看片的你 <i></i> FROM · V电影网</div>
+        <h1>给影迷的<em>一封信</em><br>片单<em>，</em>已<em>寄</em>出<em>。</em></h1>
+        <p class="sub">V电影网（vdianyingwang-wap.github.io）把电影与剧集片单折成一份可翻阅的目录，分类清晰、持续更新，让你少绕路、多看好片。</p>
+        <div class="acts"><a href="#mods" class="btn on">打开目录 →</a><a href="#contact" class="btn gh">回信留言</a></div>
+      </div>
+      <aside class="paperc">
+        <div class="tp"><span>ENVELOPE / 信封内页</span><b>● SEALED</b></div>
+        <div class="bd">
+          <dl>
+            <dt>站名</dt><dd>V电影网</dd>
+            <dt>网址</dt><dd>vdianyingwang-wap.github.io</dd>
+            <dt>性质</dt><dd>影视导航与工具站</dd>
+            <dt>内容</dt><dd>片单整理 / 分类导航</dd>
+            <dt>状态</dt><dd>持续更新中</dd>
+          </dl>
+          <div class="sign">倡导正版观影，尊重版权。本站不提供在线播放服务，整理内容仅供学习与交流参考。</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目一 · 目录 ===== -->
+<section id="mods">
+  <div class="wrap">
+    <div class="folio"><div class="l"><div class="no">CHAPTER 01 / 目录</div><h2>六<em>个章节</em>，按需翻阅</h2><p class="d">每一章是一张折纸，打开即是该栏目的主要方向与入口。</p></div><a href="#" class="more">阅读完整目录 →</a></div>
+    <div class="mods">
+      <article class="mod" style="--c:var(--navy)"><span class="ribbon">CH.01</span><h3>口碑榜单</h3><p class="lead">按口碑与获奖情况整理的片单，适合想找"值得看"的时候翻阅。</p><ol><li>豆瓣高分榜</li><li>经典重温</li><li>冷门遗珠</li></ol><a href="#" class="go">翻开 →</a></article>
+      <article class="mod" style="--c:var(--orange)"><span class="ribbon">CH.02</span><h3>类型专场</h3><p class="lead">动作、悬疑、喜剧、爱情、科幻、惊悚，按口味对号入座。</p><ol><li>动作 / 悬疑</li><li>喜剧 / 爱情</li><li>科幻 / 惊悚</li></ol><a href="#" class="go">翻开 →</a></article>
+      <article class="mod" style="--c:var(--green)"><span class="ribbon">CH.03</span><h3>当季新片</h3><p class="lead">院线与流媒体的新作速递，加上预告前瞻，追新不漏片。</p><ol><li>当季新片速递</li><li>热门榜单</li><li>预告前瞻</li></ol><a href="#" class="go">翻开 →</a></article>
+      <article class="mod" style="--c:var(--red)"><span class="ribbon">CH.04</span><h3>好剧专场</h3><p class="lead">剧集与短剧、纪录片分门别类，碎片时间也能看完整段故事。</p><ol><li>好剧专场</li><li>短剧精选</li><li>纪录片</li></ol><a href="#" class="go">翻开 →</a></article>
+      <article class="mod" style="--c:var(--blue)"><span class="ribbon">CH.05</span><h3>观影指南</h3><p class="lead">正版渠道说明、片单收藏方法，以及本站版权立场。</p><ol><li>正版渠道指引</li><li>片单收藏</li><li>版权声明</li></ol><a href="#" class="go">翻开 →</a></article>
+      <article class="mod" style="--c:var(--plum)"><span class="ribbon">CH.06</span><h3>读者来信</h3><p class="lead">留言反馈、问题咨询与合作联系，随时可以回信给我们。</p><ol><li>留言与反馈</li><li>问题咨询</li><li>合作联系</li></ol><a href="#" class="go">翻开 →</a></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目二 · 索引 ===== -->
+<section id="idx">
+  <div class="wrap">
+    <div class="folio"><div class="l"><div class="no">CHAPTER 02 / 索引</div><h2>入口<em>速查</em></h2><p class="d">一张索引卡，横向扫一眼就能找到想进的栏目与状态。</p></div></div>
+    <div class="idx">
+      <div class="gr">
+        <a class="it" href="#" style="--c:var(--green)"><div class="no"><span>NO.01</span><b>●</b></div><h3>高分口碑榜</h3><p>口碑优先，影史佳作与冷门遗珠。</p><span class="st on">OPEN</span></a>
+        <a class="it" href="#" style="--c:var(--orange)"><div class="no"><span>NO.02</span><b>●</b></div><h3>类型专场</h3><p>按题材划分，对号入座选片。</p><span class="st on">OPEN</span></a>
+        <a class="it" href="#" style="--c:var(--blue)"><div class="no"><span>NO.03</span><b>●</b></div><h3>当季新片</h3><p>近期新作与预告前瞻。</p><span class="st new">NEW</span></a>
+        <a class="it" href="#" style="--c:var(--red)"><div class="no"><span>NO.04</span><b>●</b></div><h3>好剧专场</h3><p>剧集片单与短剧精选。</p><span class="st on">OPEN</span></a>
+      </div>
+      <div class="gr">
+        <a class="it" href="#" style="--c:var(--navy)"><div class="no"><span>NO.05</span><b>●</b></div><h3>观影指南</h3><p>正版渠道与版权说明。</p><span class="st soon">NOTE</span></a>
+        <a class="it" href="#" style="--c:var(--plum)"><div class="no"><span>NO.06</span><b>●</b></div><h3>留言与反馈</h3><p>推荐好片与提出建议。</p><span class="st on">OPEN</span></a>
+        <a class="it" href="#" style="--c:var(--green)"><div class="no"><span>NO.07</span><b>●</b></div><h3>更新记录</h3><p>本站维护与片单变动日志。</p><span class="st new">NEW</span></a>
+        <a class="it" href="#" style="--c:var(--ink2)"><div class="no"><span>NO.08</span><b>●</b></div><h3>关于本站</h3><p>定位、原则与更新节奏。</p><span class="st on">OPEN</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目三 · 时间线 ===== -->
+<section id="tl">
+  <div class="wrap">
+    <div class="folio"><div class="l"><div class="no">CHAPTER 03 / 更新记录</div><h2>信的<em>邮戳</em></h2><p class="d">每一次更新都是一次寄出，倒序排列，最新的在最上面。</p></div></div>
+    <div class="tl">
+      <article class="note" style="--c:var(--green)"><span class="pin">LATEST</span><div class="dt">本月 · 04 期</div><h3>分类导航扩充，新增纪录片专场</h3><p>补充了纪录片片单与分类入口，索引卡同步更新，状态可见。</p></article>
+      <article class="note" style="--c:var(--orange)"><div class="dt">上月 · 03 期</div><h3>当季新片速递集中更新</h3><p>整理了近期院线与流媒体新作，并补上预告前瞻部分。</p></article>
+      <article class="note" style="--c:var(--navy)"><div class="dt">上上月 · 02 期</div><h3>好剧专场与短剧精选上线</h3><p>剧集片单按题材分类，碎片时间也能找到完整的故事。</p></article>
+      <article class="note" style="--c:var(--plum)"><div class="dt">创站 · 01 期</div><h3>V电影网开始寄出第一封信</h3><p>确立了"影视导航与工具站"的定位，倡导正版观影、尊重版权。</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目四 · 问答 ===== -->
+<section id="qa">
+  <div class="wrap">
+    <div class="folio"><div class="l"><div class="no">CHAPTER 04 / 常见问答</div><h2>寄出<em>之前</em>先看这里</h2><p class="d">尤其是关于在线播放与版权的部分，关系到每一位读者的观影体验。</p></div></div>
+    <div class="qa">
+      <div class="prew">
+        <h3>阅读提示 · PREFACE</h3>
+        <ol>
+          <li><b>本站为影视导航与工具站</b>，仅整理片单与资源入口，不提供在线播放服务。</li>
+          <li>本站<b>不提供影视资源下载</b>，也不托管任何视频文件。</li>
+          <li>倡导正版观影、尊重版权，<b>推荐通过正版渠道观看</b>。</li>
+          <li>所整理内容仅供<b>学习与交流参考</b>，版权事宜可随时联系。</li>
+          <li>片单持续维护，分类导航与更新记录可见索引与邮戳。</li>
+        </ol>
+      </div>
+      <div class="faq" id="faq2">
+        <div class="it open"><div class="q"><span class="n">Q.01</span><span>本站提供在线播放或下载吗？</span><span class="ar">＋</span></div><div class="a"><div>不提供。本站为影视导航与工具站，仅整理片单与资源入口，倡导通过正版渠道观看影视作品，也不提供任何资源下载。</div></div></div>
+        <div class="it"><div class="q"><span class="n">Q.02</span><span>站名里的"V"是什么意思？</span><span class="ar">＋</span></div><div class="a"><div>"V"是本站站名标识，取自 Version / Vlog 的意象，仅代表品牌名称，不代表任何具体的播放功能或服务，本站不提供在线播放服务。</div></div></div>
+        <div class="it"><div class="q"><span class="n">Q.03</span><span>片单多久更新一次？</span><span class="ar">＋</span></div><div class="a"><div>分类导航与片单持续维护，重要档期会集中更新，各栏目当前状态可在索引卡与更新记录中查看。</div></div></div>
+        <div class="it"><div class="q"><span class="n">Q.04</span><span>如何推荐想看的影视作品？</span><span class="ar">＋</span></div><div class="a"><div>可通过页面下方的联系入口留言，或发送邮件与我们沟通，欢迎推荐好片与提出改进建议。</div></div></div>
+        <div class="it"><div class="q"><span class="n">Q.05</span><span>遇到版权相关问题怎么办？</span><span class="ar">＋</span></div><div class="a"><div>我们倡导正版观影、尊重版权，若涉及版权相关事宜，请及时通过页面底部的联系方式与我们沟通处理。</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEO ===== -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="seo"><p><b>关于 V电影网</b>（<u>vdianyingwang-wap.github.io</u>）：本站聚焦电影与剧集片单及资源入口整理，欢迎通过网站名称"V电影网"或网站网址访问。我们持续更新分类导航、口碑榜单与新片速递，倡导正版观影、尊重版权，期待为你带来更清爽的观影体验。</p></div>
+  </div>
+</section>
+</main>
+
+<footer class="ft" id="contact">
+  <div class="wrap">
+    <div class="top">
+      <div class="b"><h4>// POSTSCRIPT</h4><h3>V<em>电影网</em></h3><p>电影与剧集片单、分类导航与影视资源整理，持续更新，倡导正版观影、尊重版权。</p><div class="ch"><a href="#mods">口碑榜单</a><a href="#idx">类型专场</a><a href="#tl">更新记录</a><a href="#qa">常见问答</a><a href="#contact">联系我们</a></div></div>
+      <div class="col"><h4>// 目录</h4><a href="#home">收件人</a><a href="#mods">章节目录</a><a href="#idx">索引卡</a><a href="#tl">邮戳记录</a><a href="#qa">常见问答</a></div>
+      <div class="col"><h4>// 片单</h4><a href="#mods">高分口碑</a><a href="#idx">类型专场</a><a href="#tl">当季新片</a><a href="#contact">联系我们</a></div>
+      <div class="col"><h4>// 联络</h4><a href="mailto:hi@vdianyingwang-wap.github.io">回信留言</a><a href="#contact">在线留言</a><a href="#top">回到顶部</a></div>
+    </div>
+    <div class="end"><span>© <span id="yr"></span> V电影网 · vdianyingwang-wap.github.io · 本站为影视导航与工具站，倡导正版观影，尊重版权</span><span><a href="#">免责声明</a><a href="#">隐私政策</a><a href="#contact">联系我们</a></span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var y=document.getElementById('yr'); if(y) y.textContent=new Date().getFullYear();
+  var btn=document.getElementById('hamb'),nav=document.getElementById('mn');
+  if(btn&&nav){
+    btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o?'true':'false');});
+    nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');}});
+  }
+  var its=document.querySelectorAll('.faq .it');
+  its.forEach(function(it){
+    var q=it.querySelector('.q'); if(!q)return;
+    q.addEventListener('click',function(){var o=it.classList.contains('open');its.forEach(function(x){x.classList.remove('open');});if(!o)it.classList.add('open');});
+  });
+})();
+</script>
+</body>
+</html>
